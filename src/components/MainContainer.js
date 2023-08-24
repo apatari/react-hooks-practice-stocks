@@ -5,16 +5,17 @@ import SearchBar from "./SearchBar";
 
 function MainContainer() {
 
-  const [portfolio, setPortfolio] = useState([1, 2, 4])
+  const [portfolio, setPortfolio] = useState([])
   const [stocks, setStocks] = useState([])
+  const [filterBy, setFilterBy] = useState("All")
 
 
   return (
     <div>
-      <SearchBar />
+      <SearchBar setStocks={setStocks} stocks={stocks} setFilterBy={setFilterBy}/>
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks} setStocks={setStocks} portfolio={portfolio} setPortfolio={setPortfolio} />
+          <StockContainer filterBy={filterBy} stocks={stocks} setStocks={setStocks} portfolio={portfolio} setPortfolio={setPortfolio} />
         </div>
         <div className="col-4">
           <PortfolioContainer portfolio={portfolio} setPortfolio={setPortfolio} stocks={stocks} />
